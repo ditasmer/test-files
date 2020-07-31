@@ -1,4 +1,7 @@
 <?php
+//proteccion de variables vacias, inicialización
+$comentario = '';
+
 //lectura rápida del fichero
 //valida si existe
 if(file_exists('files/helloworld.txt')){
@@ -22,6 +25,12 @@ $nuevo_contenido = "Adios mundo \n me voy de aqui";
 //crea el fichero en caso de que no exista
 file_put_contents('files/byeworld.txt', $nuevo_contenido);
 
+//comprobamos si existe el fichero cuando cargamos la página
+if(file_exists('files/comentarios.txt')){
+	$comentario = file_get_contents('files/comentarios.txt');
+	echo $comentario;
+}
+
 //comprobamos que exise Enviar cuando cargamos la página por primera vez mediante GET
 if(isset($_GET['enviar'])){
 
@@ -29,6 +38,9 @@ if(isset($_GET['enviar'])){
 	$comentario = trim($_GET['comentario']);
 	echo "Este es el comentario:<br>";
 	echo $comentario;
+
+	//crea el fichero en caso de que no exista
+	file_put_contents('files/comentarios.txt', $comentario);
 }
 
 ?>
@@ -43,7 +55,7 @@ if(isset($_GET['enviar'])){
 	<h3>Formulario comentario en textarea</h3>
 	<!--enviamos datos mediante GET-->
 	<form method="get" action="#">
-	<textarea name="comentario" cols="40" rows="5"></textarea>
+	<textarea name="comentario" cols="40" rows="5"><?=$comentario;?></textarea>
 	
 	<input type="submit" value='Enviar' name="enviar">
 	
