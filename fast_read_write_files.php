@@ -46,7 +46,7 @@ if(isset($_GET['enviar'])){
 }*/
 
 //EJERCICIO FICHEROS AVANZADO
-
+/*
 //header acentos
 header('Content-Type: text/html; charset=UTF-8');
 //abrir fichero en modo r
@@ -80,7 +80,23 @@ $contenido = fread($fichero, $lon);
 echo $contenido;
 
 //cerrar el fichero
+fclose($fichero);*/
+
+//EJERCICIO ESCRITURA AVANZADA
+//abrir, punto posicionado al inicio, reescribe encima del cotenido anterior
+$fichero = fopen('files/ejemplo.txt', 'r+');
+
+//escritura, salto de linea solo funciona con comillas dobles
+$nuevo_contenido = "Bye bye\n";
+
+fwrite($fichero, $nuevo_contenido);
+
+//cerrar
 fclose($fichero);
+
+
+
+
 
 ?>
 
