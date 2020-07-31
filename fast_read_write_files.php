@@ -83,8 +83,8 @@ echo $contenido;
 fclose($fichero);*/
 
 //EJERCICIO ESCRITURA AVANZADA
-//abrir, punto posicionado al inicio, reescribe encima del cotenido anterior
-$fichero = fopen('files/ejemplo.txt', 'r+');
+//abrir, punto posicionado al final, reescribe encima del cotenido anterior
+$fichero = fopen('files/ejemplo.txt', 'a+');
 
 //escritura, salto de linea solo funciona con comillas dobles
 $nuevo_contenido = "Bye bye\n";
