@@ -1,5 +1,5 @@
 <?php
-//proteccion de variables vacias, inicialización
+/*//proteccion de variables vacias, inicialización
 $comentario = '';
 
 //EJERCICIO ACCESO A FICHEROS BÁSICO
@@ -43,7 +43,7 @@ if(isset($_GET['enviar'])){
 
 	//crea el fichero en caso de que no exista
 	file_put_contents('files/comentarios.txt', $comentario);
-}
+}*/
 
 //EJERCICIO FICHEROS AVANZADO
 
@@ -53,19 +53,34 @@ header('Content-Type: text/html; charset=UTF-8');
 $fichero = fopen('files/ejemplo.txt', 'r');
 
 //leer letr a letra
+echo "letra a letra:<br>";
 while (!feof($fichero)) {
 	$letra = fgetc($fichero);
 	echo $letra;
 }
 echo "<br>";
+echo "linea a linia:<br>";
+//como hemos llegado al final del fichero con el anterior fopen debemos volver a abrir el fichero, el puntero se queda en el punto que le digamos, al hacer while, ha llegado al final
 $fichero = fopen('files/ejemplo.txt', 'r');
 //leer linea a linia
 while (!feof($fichero)) {
 	$linea = fgets($fichero);
 	echo $linea;
 }
+echo "<br>";
 
+//Rebobinar fichero al inicio, no hace falta volver a abrir fichero
+rewind($fichero);
 
+echo "hasta una longitud determinada:<br>";
+//$fichero = fopen('files/ejemplo.txt', 'r');
+//leer fichero hasta una longitud determinada
+$lon = filesize('files/ejemplo.txt');
+$contenido = fread($fichero, $lon);
+echo $contenido;
+
+//cerrar el fichero
+fclose($fichero);
 
 ?>
 
