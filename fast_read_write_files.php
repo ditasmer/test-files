@@ -57,6 +57,13 @@ while (!feof($fichero)) {
 	$letra = fgetc($fichero);
 	echo $letra;
 }
+echo "<br>";
+$fichero = fopen('files/ejemplo.txt', 'r');
+//leer linea a linia
+while (!feof($fichero)) {
+	$linea = fgets($fichero);
+	echo $linea;
+}
 
 
 
