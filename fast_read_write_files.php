@@ -46,13 +46,18 @@ if(isset($_GET['enviar'])){
 }
 
 //EJERCICIO FICHEROS AVANZADO
+
+//header acentos
+header('Content-Type: text/html; charset=UTF-8');
 //abrir fichero en modo r
 $fichero = fopen('files/ejemplo.txt', 'r');
 
 //leer letr a letra
-$letra = fgetc($fichero);
+while (!feof($fichero)) {
+	$letra = fgetc($fichero);
+	echo $letra;
+}
 
-echo $letra;
 
 
 ?>
