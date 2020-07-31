@@ -21,4 +21,35 @@ $nuevo_contenido = "Adios mundo \n me voy de aqui";
 
 //crea el fichero en caso de que no exista
 file_put_contents('files/byeworld.txt', $nuevo_contenido);
+
+//comprobamos que exise Enviar cuando cargamos la página por primera vez mediante GET
+if(isset($_GET['enviar'])){
+
+	//si existe, leemos y evaluamos comentario
+	$comentario = trim($_GET['comentario']);
+	echo "Este es el comentario:<br>";
+	echo $comentario;
+}
+
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulario comentario en textarea</title>
+	<meta charset='UTF-8'>
+</head>
+<body>
+	<h3>Formulario comentario en textarea</h3>
+	<!--enviamos datos mediante GET-->
+	<form method="get" action="#">
+	<textarea name="comentario" cols="40" rows="5"></textarea>
+	
+	<input type="submit" value='Enviar' name="enviar">
+	
+	
+	</form>
+
+	
+</body>
+</html>
